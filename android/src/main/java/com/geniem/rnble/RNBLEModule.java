@@ -71,6 +71,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import android.util.Base64;
 
+
 class RNBLEModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
     public static final String TAG = "RNBLEModule";
 
