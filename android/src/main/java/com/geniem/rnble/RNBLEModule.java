@@ -501,9 +501,16 @@ class RNBLEModule extends ReactContextBaseJavaModule implements LifecycleEventLi
     @Override
     public void onHostDestroy() {
         Log.v(TAG, "onHostDestroy");
-        if (bluetoothGatt != null) {
-            bluetoothGatt.disconnect();
-            bluetoothGatt.close();
+        try {
+            if (bluetoothGatt != null) {
+                bluetoothGatt.disconnect();
+                bluetoothGatt.close();
+                bluetoothGatt = null;
+                connectionState = STATE_DISCONNECTED;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        } finally {
             bluetoothGatt = null;
             connectionState = STATE_DISCONNECTED;
         }
